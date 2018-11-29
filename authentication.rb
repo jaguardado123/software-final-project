@@ -60,6 +60,22 @@ def current_user
 	end
 end
 
+def pro_user
+	if current_user.type == 2
+		return true
+	else
+		return false
+	end
+end
+
+def admin
+	if current_user.type == 3
+		return true
+	else
+		return false
+	end
+end
+
 #if the user is not signed in, will redirect to login page
 def authenticate!
 	if !current_user

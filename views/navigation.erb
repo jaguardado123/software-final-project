@@ -14,33 +14,39 @@
 
          <% if admin %>
             <li class="nav-item">
-              <a class="nav-link" href="/dashboard">Dashboard</a>
+             <a class="nav-link" href="/logout"> Logout </a>
             </li>
             <li class="nav-item">
-             <a class="nav-link" href="/logout">Logout</a>
+              <a class="nav-link" href="/schools"> Schools </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/schools/new"> Add New </a>
             </li>
          <% elsif pro_user %>
             <li class="nav-item">
-              <a class="nav-link" href="/dashboard">Dashboard</a>
+              <a class="nav-link" href="/logout"> Logout </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/logout">Logout</a>
+              <a class="nav-link" href="/schools"> Schools </a>
             </li>
          <% else %>
             <li class="nav-item">
-              <a class="nav-link" href="/dashboard">Dashboard</a>
+             <a class="nav-link" href="/logout"> Logout </a>
             </li>
             <li class="nav-item">
-             <a class="nav-link" href="/logout">Logout</a>
+              <a class="nav-link" href="/schools"> Schools </a>
+            </li>
+            <li class="nav-item">
+             <a class="nav-link" href="/upgrade"> Upgrade </a>
             </li>
          <% end %>
 
       <% else %>
         <li class="nav-item">
-          <a class="nav-link" href="/login">Login</a>
+          <a class="nav-link" href="/login"> Login </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/sign_up">Sign Up</a>
+          <a class="nav-link" href="/sign_up"> Sign Up </a>
         </li>
       <% end %>
 

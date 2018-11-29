@@ -23,3 +23,4 @@ DataMapper.finalize
 
 # automatically create the post table
 School.auto_upgrade!
+

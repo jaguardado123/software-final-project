@@ -12,6 +12,7 @@ end
 class Teacher
     include DataMapper::Resource
     property :id, Serial
+    property :name, String
     property :school_id, Integer
     property :rating, Integer, :default => 100
    
