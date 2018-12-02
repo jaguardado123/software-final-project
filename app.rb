@@ -29,14 +29,21 @@ end
 
 get "/schools" do
 	authenticate!
+	@schools = School.all
 	erb :schools
 end
 
-get "/schools/teachers" do
+get("/schools/teachers/:id") do
 	authenticate!
+	@teachers = Teacher.all(Teacher.school_id => params[:id].to_i)
 	erb :teachers
 end
 
+
+get("/schools/teachers/:id/:name") do
+	authenticate!
+	erb :reviews
+end
 
 get "/schools/new" do
 	authenticate!

@@ -1,3 +1,21 @@
 <div class="container">
+	<div class = "row">
+		<div class = "col">
+			<br>
+			<br>
+			<h2>Teachers</h2>
+			<div class="list-group">
+			
+			<% @teachers.each do |teacher| %>
+			  <form method="get" action="/schools/teachers/<%= teacher.school_id %>/<%= teacher.name %>">
+				    <button type="submit" class="list-group-item list-group-item-action">
+			    <%= teacher.name.to_s %>
+			  </form>
 
+			 <%end%>
+
+			</div>
+		</div>
+
+	</div>
 </div>
