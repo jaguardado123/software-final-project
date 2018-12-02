@@ -2,13 +2,9 @@ require "sinatra"
 require 'sinatra/flash'
 require_relative "authentication.rb"
 require_relative "upgrade.rb"
-
-
-
-#require_relative "upgrade.rb"
-#require_relative "school.rb"
-#require_relative "teacher.rb"
-#require_relative "review.rb"
+require_relative "school.rb"
+require_relative "teacher.rb"
+require_relative "review.rb"
 
 # the following urls are included in authentication.rb
 # GET /login
@@ -41,14 +37,42 @@ get "/schools/teachers" do
 	erb :teachers
 end
 
+
 get "/schools/new" do
 	authenticate!
 	if admin
+		@schools = School.all
 		erb :new
 	else
 		redirect "/"
 	end
 end
+
+post "/schools/create_school" do
+	authenticate!
+	if params[:school_name] && 
+		sch = School.new
+		sch.name = params[:school_name]
+		sch.save
+		flash[:success] = "Succesfully Added #{sch.name}"
+	end
+	
+	redirect"/schools/new"
+end
+
+post "/schools/create_teacher" do
+	if params[:teacher_name] && params[:select_school]
+		tch = Teacher.new
+		tch.name = params[:teacher_name]
+		t = School.first(:name => params[:select_school])
+		tch.school_id = t.id
+		tch.save
+		flash[:success] = "Succesfully Added #{tch.name}"
+	end
+
+	redirect"/schools/new"
+end
+
 
 get "/reviews" do
 	authenticate!

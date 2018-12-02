@@ -1,3 +1,34 @@
-<div class="container">
+<br/>
+<form method="POST" action="/schools/create_school">
 
-</div>
+    <pre><font face="verdana" size = "4"><strong>Add School</strong></font></pre>
+    <div class="form-group">
+        <input type="text" class="form-control" name="school_name" placeholder="Full Name">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+  </form>
+
+  <br/> <hr> <br/>
+
+<form method="POST" action="/schools/create_teacher">
+    <pre><font face="verdana" size = "4"><strong>Add Teacher</strong></font></pre>
+    <div class="form-group">
+        <input type="text" class="form-control" name="teacher_name" placeholder="Full Name">
+    </div>
+    <div class="input-group">
+        <select class="custom-select" name="select_school" aria-label="Example select with button addon">
+            <option selected>Select a school...</option>
+            <% @schools.each do |school| %>
+                <option value="<%=school.name.to_s%>"> <%=school.name.to_s%> </option>
+            <%end%>
+        </select>
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button">Select</button>
+        </div>
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <hr>
+
+</form>
