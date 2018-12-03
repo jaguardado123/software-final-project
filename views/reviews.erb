@@ -1,3 +1,52 @@
 <div class="container">
+	<div class = "row">
+		<div class = "col">
+			<br>
+			<h2><%= @teacher.name %></h2>
+			<%if @teacher.totalSum == 0 %>
+				<h3>There are currently no ratings</h3>
+			<%else %>
+				<h3>Rating: <%= (@teacher.totalRatings.to_f / @teacher.totalSum.to_f).round(2) %></h3>
+			<%end%>
+			<br>
+			<h4>Add a Review</h4>
+			<form method="POST" action="/create_review">
+				<input type="hidden" name="teacher" value="<%=@teacher.id%>">
 
+
+			    <div class="form-group">
+			        <textarea class="form-control" name="textReview" rows="3"></textarea>
+			    </div>
+
+
+			    <div class="form-group">
+			        <select class="form-control" name="rating">
+			            <option selected>Select a rating...</option>
+			            <% for i in 0..5 %>
+			                <option value="<%=i%>"> <%=i%> </option>
+			            <%end%>
+			        </select>
+			    </div>
+			  
+			    <button type="submit" class="btn btn-primary">Submit</button>
+
+			</form>
+
+			<br>
+			<h4>Reviews</h4>
+
+			<ul class="list-group">
+			<% @reviews.each do |review| %>
+			    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+			    <p class="mb-1"><%= review.review%></p>
+			    <div class="d-flex w-100 justify-content-between">
+			      <small>Rating: <%= review.rating%></small>
+			    </div>
+			    
+			  </a>
+			 <%end%>
+
+			</ul>
+		</div>
+	</div>
 </div>

@@ -7,18 +7,29 @@
 			<div class="list-group">
 			
 			<% @teachers.each do |teacher| %>
-			  <form method="get" action="/schools/teachers/<%= teacher.school_id %>/<%= teacher.name %>">
+			  <form method="get" action="/schools/teachers/<%= teacher.id %>/<%= teacher.name %>">
 				    <button type="submit" class="list-group-item list-group-item-action">
-					<li class="d-flex justify-content-between align-items-center">
-					<%= teacher.name.to_s %> <span class="badge badge-primary badge-pill"> 
-					<% if admin || pro_user %> <%= teacher.rating.to_i %> / 100 <% end %> </span>
-					</li>
-			  </form>
+
+
+				<li class = "d-flex justify-content-between align-items-center">
+				<%= teacher.name.to_s %> <span class = "badge badge-primary badge-pill">
+
+				<% if admin || pro_user %>
+					<%if teacher.totalSum != 0 %>
+					<%= (teacher.totalRatings.to_f / teacher.totalSum.to_f).round(2) %>
+					<%else%>
+						No rating
+					<%end%>
+				<%end%> 
+				</span>
+
+				</li>
+			    
+			   </form>
 
 			 <%end%>
 
 			</div>
 		</div>
-
 	</div>
 </div>

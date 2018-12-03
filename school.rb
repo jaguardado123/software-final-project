@@ -13,8 +13,8 @@ class School
     include DataMapper::Resource
     property :id, Serial
     property :name, String
-    property :rating, Integer, :default => 100
-    
+    property :totalRatings, Integer, :default => 0
+    property :totalSum, Integer, :default => 0
 end
 
 # Perform basic sanity checks and initialize all relationships

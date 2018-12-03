@@ -42,8 +42,52 @@ end
 
 get("/schools/teachers/:id/:name") do
 	authenticate!
-	erb :reviews
+	if pro_user || admin
+
+		puts "This is the id we are searching for: #{params[:id]}"
+		@teacher = Teacher.first(:id => params[:id].to_i)
+		@reviews = Review.all(Review.teacher_id => params[:id].to_i)
+		erb :reviews
+	end
 end
+
+post "/create_review" do
+	teach = Teacher.first(:id => params[:teacher].to_i)
+	if params[:teacher] && params[:rating] && params[:textReview]
+		rev = Review.new 
+		rev.review = params[:textReview]
+		rev.rating = params[:rating].to_i
+		rev.user_id = current_user.id
+		rev.teacher_id = teach.id
+		rev.school_id = teach.school_id
+
+		rev.save
+
+		#Update the teacher ratings
+		currentRating = teach.totalRatings
+		currentSum = teach.totalSum
+		teach.update(:totalRatings => currentRating + params[:rating].to_i)
+		teach.update(:totalSum => currentSum + 1)
+		teach.save
+
+		#Update the school ratings
+		sch = School.first(:id => teach.school_id)
+		schRating = sch.totalRatings
+		schSum = sch.totalSum
+		sch.update(:totalRatings => schRating + params[:rating].to_i)
+		sch.update(:totalSum => schSum + 1)
+		sch.save
+
+		flash[:success] = "Review has been added"
+	else
+		flash[:error] = "Parameters are needed"
+	end
+
+	redirect "/schools/teachers/#{teach.id}/#{teach.name}" 
+
+
+end
+
 
 get "/schools/new" do
 	authenticate!
@@ -57,7 +101,7 @@ end
 
 post "/schools/create_school" do
 	authenticate!
-	if params[:school_name] && 
+	if params[:school_name] 
 		sch = School.new
 		sch.name = params[:school_name]
 		sch.save
@@ -74,7 +118,7 @@ post "/schools/create_teacher" do
 		t = School.first(:name => params[:select_school])
 		tch.school_id = t.id
 		tch.save
-		flash[:success] = "Succesfully Added #{tch.name}"
+		flash[:success] = "Succesfully Added #{tch.name} with id #{tch.id}"
 	end
 
 	redirect"/schools/new"

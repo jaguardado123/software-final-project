@@ -14,7 +14,8 @@ class Teacher
     property :id, Serial
     property :name, String
     property :school_id, Integer
-    property :rating, Integer, :default => 100
+    property :totalRatings, Integer, :default => 0
+    property :totalSum, Integer, :default => 0
    
 end
 
