@@ -43,11 +43,12 @@ end
 get("/schools/teachers/:id/:name") do
 	authenticate!
 	if pro_user || admin
-
 		puts "This is the id we are searching for: #{params[:id]}"
 		@teacher = Teacher.first(:id => params[:id].to_i)
 		@reviews = Review.all(Review.teacher_id => params[:id].to_i)
 		erb :reviews
+	else
+		redirect '/upgrade'
 	end
 end
 
