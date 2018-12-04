@@ -14,47 +14,47 @@
 
          <% if admin %>
             <li class="nav-item">
-             <a class="nav-link" href="/logout"> Logout </a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="/schools"> Schools </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/schools/new"> Add New </a>
             </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="/logout">
+              <button class="btn btn-outline-danger my-2 my-sm-0"  type="submit">Logout</button>
+            </form>
          <% elsif pro_user %>
             <li class="nav-item">
-              <a class="nav-link" href="/logout"> Logout </a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="/schools"> Schools </a>
             </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="/logout">
+              <button class="btn btn-outline-danger my-2 my-sm-0"  type="submit">Logout</button>
+            </form>
          <% else %>
             <li class="nav-item">
-             <a class="nav-link" href="/logout"> Logout </a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="/schools"> Schools </a>
             </li>
-            <li class="nav-item">
-             <a class="nav-link" href="/upgrade"> Upgrade </a>
-            </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="/upgrade">
+              <button class="btn btn-outline-success my-2 my-sm-0"  type="submit">Upgrade</button>
+            </form>
+            <li> </li>
+            <form class="form-inline my-2 my-lg-0" action="/logout">
+              <button class="btn btn-outline-danger my-2 my-sm-0"  type="submit">Logout</button>
+            </form>
          <% end %>
 
       <% else %>
-        <li class="nav-item">
-          <a class="nav-link" href="/login"> Login </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/sign_up"> Sign Up </a>
-        </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" action="/login">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+        </form>
+        <li> </li>
+        <form class="form-inline my-2 my-lg-0" action="/sign_up">
+          <button class="btn btn-outline-warning my-2 my-sm-0"  type="submit">Sign Up</button>
+        </form>
       <% end %>
 
-
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
   </div>
 </nav>
