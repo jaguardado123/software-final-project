@@ -1,14 +1,35 @@
+<style type="text/css">
+   		 /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+   		.card{position:relative !important; margin-top: 2% !important; margin-right: auto; margin-left: auto; text-align: center;}
+</style>
 
-<form action="/charge" method="post" class="payment">
-<article>
-  <label class="amount">
-    <span>Amount: $5.00</span>
-  </label>
-</article>
+<div class = "container">
+	
+	<div class = "row">
+		<div class = "col">
+			<div class = "card" style="width:18rem; height: 18rem;">
+				<br>
+				<form action="/charge" method="post" class="payment">
+            <article>
+                <h4><strong>Oops!</strong> <br> You need to upgrade to be able to view these features</h4>
+                <br>
+                <label class="amount">
+                    <span><strong>Amount: $5.00</strong></span>
+                </label>
+            </article>
 
-<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-        data-key="<%= settings.publishable_key %>"
-        data-description="A month's subscription"
-        data-amount="500"
-        data-locale="auto"></script>
-</form>
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= settings.publishable_key %>"
+                data-description="A month's subscription"
+                data-amount="500"
+                data-locale="auto"></script>
+        
+        </form>
+
+			</div>
+			
+		</div>
+	</div>
+
+
+</div>
