@@ -1,5 +1,41 @@
-<form action="/process_login" method="POST">
-	Email: <input type="text" name="email"><br/>
-	Password: <input type="password" name="password"><br/>
-	<input type="submit" name="" value="Login">
-</form>
+
+ <style type="text/css">
+   		 /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+   		.card{position:relative !important; margin-top: 2% !important; margin-right: auto; margin-left: auto; text-align: center;}
+</style>
+
+<div class = "container">
+	
+	<div class = "row">
+		<div class = "col">
+			<div class = "card" style="width:18rem; height: 18rem;">
+				<br>
+				<form action="/process_login" method="POST">
+					<h4>Login</h4>
+					<h6>Email</h6>
+						<div class="form-group">
+							<input type="text" name="email"><br/>
+						</div>
+					 
+					<h6>Password</h6>
+					<div class="form-group">
+						<input type="password" name="password"><br/>
+					</div>
+					 
+					<input type="submit" name="" value="Login" class ="btn btn-primary">
+
+
+
+				</form>
+
+			</div>
+			
+		</div>
+	</div>
+
+
+</div>
+
+
+
+
